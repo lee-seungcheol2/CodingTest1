@@ -9,15 +9,15 @@ bool solution(string s) {
         
         for (int i = 0; i < s.length(); i++)
         {
-	        if (!isdigit(s[i])  )  //&& s[i]<123
+	        if (s[i]>64  )  //&& s[i]<123
 	        {
-                answer=false;
-		        break;
+                return false;
+		        
 	        }
         }
     }
     else 
-        answer=false;
+        return false;
     
     return answer;
 }
