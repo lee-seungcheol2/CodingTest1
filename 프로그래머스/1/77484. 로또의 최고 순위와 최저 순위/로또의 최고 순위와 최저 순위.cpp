@@ -2,50 +2,37 @@
 #include <vector>
 
 using namespace std;
+int func(int n){
+    if(n == 6) return 1;
+    else if(n == 5) return 2;
+    else if(n == 4) return 3;
+    else if(n == 3) return 4;
+    else if(n == 2) return 5;
+    else return 6;
+}
 
 vector<int> solution(vector<int> lottos, vector<int> win_nums) {
     vector<int> answer;
-    vector<int> temp;
-int lowC = 0;
-int hiC = 0;
-for (int i = 0; i < lottos.size(); ++i)
-{
-    if (lottos[i] == 0)
-    {
-        hiC++;
-        continue;
+
+    // 0의 갯수를 담는 변수
+    int zero = 0;
+    for(int i = 0; i < lottos.size(); i++){
+        if(lottos[i] == 0) zero++;
     }
-    for (int j = 0; j < win_nums.size(); ++j)
-    {
-        if (lottos[i] == win_nums[j])
-        {
-            lowC++;
-            hiC++;
+
+    // lottos와 win_nums에서 일치하는 번호 갯수를 담는 변수
+    int check = 0;
+    int visited[6] = {0,};
+    for(int i = 0; i < lottos.size(); i++){
+        for(int j = 0; j < win_nums.size(); j++){
+            if(visited[i] == 0 && lottos[i] == win_nums[j]){
+                visited[i] = 1;
+                check++;
+            }
         }
     }
 
+    answer.push_back(func(zero+check));
+    answer.push_back(func(check));
+    return answer;
 }
-temp.push_back(hiC);
-temp.push_back(lowC);
-for (int i = 0; i < 2; i++)
-{
-    if (temp[i] == 6)
-        answer.push_back(1);
-    else if (temp[i] == 5)
-        answer.push_back(2);
-    else if (temp[i] == 4)
-        answer.push_back(3);
-    else if (temp[i] == 3)
-        answer.push_back(4);
-    else if (temp[i] == 2)
-        answer.push_back(5);
-    else
-        answer.push_back(6);
-}
-
-return answer;
-
-}
-    
-
-   
