@@ -83,7 +83,7 @@ for(int i=0;i<s.size();++i)
 int a = 0;
 for (int i = 0; i < c.length(); ++i)
 {
-	a = a * 10 + static_cast<int>(c[i]-48);
+	a = a * 10 + (c[i]-48);
 }
     return a;
 }
